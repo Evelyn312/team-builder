@@ -1,7 +1,8 @@
 import React, {useState} from "react";
-import ReactDom from "react-dom";
 
-const Form = () => {
+
+const Form = props => {
+
     const[memberData, setMemberData] = useState({
         fName: "",
         lName: "",
@@ -9,18 +10,18 @@ const Form = () => {
         role: ""
     });
 
-    console.log("THis is the info",memberData);
-
     const valueOnChange = (event) => {
         setMemberData({...memberData, 
         [event.target.name]: event.target.value
         })
+        console.log("THis is the info",memberData);
     }
 
     return(
         <div>
             <form onSubmit={(event) => {
                 event.preventDefault();
+                props.onSubmit(memberData);
                 // setMemberData({
                 //     fName: "",
                 //     lName: "",
@@ -49,17 +50,19 @@ const Form = () => {
                     <input
                         placeholder="Enter Email"
                         onChange={valueOnChange}
-                        name="Email"
+                        name="email"
                     />
                 </label> 
                 <label>
                     Role:
-                    <select>
-                        <option>Backend</option>
-                        <option>Frontend</option>
-                        <option>Fullstack</option>
-                        <option>Designer</option>
-                        <option>Project Manager</option>
+                    <select 
+                        onChange={valueOnChange}
+                    >
+                        <option value="Backend">Backend</option>
+                        <option value="Frontend">Frontend</option>
+                        <option value="Fullstack">Fullstack</option>
+                        <option value="Designer">Designer</option>
+                        <option value="Project Manager">Project Manager</option>
                     </select>
                 </label>
                 <button>Send</button>
