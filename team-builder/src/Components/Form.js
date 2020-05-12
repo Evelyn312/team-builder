@@ -17,6 +17,10 @@ const Form = props => {
         console.log("THis is the info",memberData);
     }
 
+    useEffect(() => {
+
+    },[memberData]);
+
     return(
         <div>
             <form onSubmit={(event) => {
@@ -35,6 +39,7 @@ const Form = props => {
                         placeholder="Enter First Name"
                         onChange={valueOnChange}
                         name="fName"
+                        value={memberData.fName}
                     />
                 </label> 
                 <label>
@@ -43,6 +48,7 @@ const Form = props => {
                         placeholder="Enter Last Name"
                         onChange={valueOnChange}
                         name="lName"
+                        value={memberData.lName}
                     />
                 </label> 
                 <label>
@@ -51,6 +57,7 @@ const Form = props => {
                         placeholder="Enter Email"
                         onChange={valueOnChange}
                         name="email"
+                        value={memberData.email}
                     />
                 </label> 
                 <label>
@@ -58,6 +65,7 @@ const Form = props => {
                     <select 
                         onChange={valueOnChange}
                         name="role"
+                        value={memberData.role}
                     >   <option value="">Choose a Role</option>
                         <option value="Backend">Backend</option>
                         <option value="Frontend">Frontend</option>
