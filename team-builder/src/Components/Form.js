@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React, {useState, useEffect} from "react";
 
 
 const Form = props => {
@@ -22,12 +22,12 @@ const Form = props => {
             <form onSubmit={(event) => {
                 event.preventDefault();
                 props.onSubmit(memberData);
-                // setMemberData({
-                //     fName: "",
-                //     lName: "",
-                //     email: "",
-                //     role: ""
-                // })
+                setMemberData({
+                    fName: "",
+                    lName: "",
+                    email: "",
+                    role: ""
+                });
             }}>
                 <label>
                     First Name:
@@ -57,7 +57,8 @@ const Form = props => {
                     Role:
                     <select 
                         onChange={valueOnChange}
-                    >
+                        name="role"
+                    >   <option value="">Choose a Role</option>
                         <option value="Backend">Backend</option>
                         <option value="Frontend">Frontend</option>
                         <option value="Fullstack">Fullstack</option>
@@ -67,8 +68,6 @@ const Form = props => {
                 </label>
                 <button>Send</button>
             </form>
-
-            <h2>This is {memberData.fName}</h2>
         </div>
     );
 }
